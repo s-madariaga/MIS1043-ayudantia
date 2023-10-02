@@ -53,22 +53,35 @@ elsoc %>%
 
 elsoc %>% 
   mutate(annio = factor(annio)) %>%
-  ggplot(aes(x = tendencia)) +
-  geom_bar()
+  ggplot(aes(x = tendencia, fill = annio)) +
+  geom_bar(position = position_dodge2())
 
 elsoc %>% 
   mutate(annio = factor(annio)) %>%
-  group_by(annio) %>% 
-  count(tendencia) %>% 
-  mutate(prop = n/sum(n)) %>% 
-  ggplot(aes(x = tendencia, y = prop, fill = annio)) +
-  geom_bar(stat = "identity", position = position_dodge2())
+  ggplot(aes(x = tendencia,  fill = annio)) +
+  geom_bar(position = position_dodge2())
+
+
 
 # BONUS: Añada porcentaje
 
-# 3) De gran interés es observar cómo ha variado la confianza en el gobierno a lo largo de los años.
+# 3) Elabore una gráfica del tiempo de la comuna durante el año 2016. Seleccione solo las primeras 100 observaciones.
+
+elsoc %>% 
+  mutate(id = as.numeric(1:nrow(.)),
+         tasa = tiempo_comuna,
+         sexo = factor(sexo)) %>% 
+  filter(annio == 2016,
+         id <= 50) %>% 
+  ggplot(aes(x = reorder(id, tasa), y = tasa)) +
+  geom_line(aes(group = sexo, color = sexo))
+
+
+# 4) De gran interés es observar cómo ha variado la confianza en el gobierno a lo largo de los años.
 # Elabore un gráfico de líneas del promedio de confianza_gobierno por anio. Luego, genere la
 # mejor visualización para agrupar estos promedios por tendencia.
+
+
 
 elsoc %>% 
   mutate(annio = factor(annio),

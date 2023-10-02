@@ -54,7 +54,10 @@ head(elsoc)
 
 # BONUS: Añada porcentaje
 
-# 3) De gran interés es observar cómo ha variado la confianza en el gobierno a lo largo de los años.
+# 3) Elabore una gráfica del tiempo de la comuna durante el año 2016. Seleccione solo las primeras 100 observaciones.
+
+
+# 4) De gran interés es observar cómo ha variado la confianza en el gobierno a lo largo de los años.
 # Elabore un gráfico de líneas del promedio de confianza_gobierno por anio. Luego, genere la
 # mejor visualización para agrupar estos promedios por tendencia.
 
